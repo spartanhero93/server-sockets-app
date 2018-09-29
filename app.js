@@ -5,10 +5,8 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 const config = require('./config/config')
 
-mongoose.connect(
-  process.env.DB_URI || DB.UIR || config.db,
-  { useNewUrlParser: true },
-  () => console.log('mongoose is connected')
+mongoose.connect(process.env.DB_URI, { useNewUrlParser: true }, () =>
+  console.log('mongoose is connected')
 )
 
 const port = process.env.PORT || 3000
