@@ -6,7 +6,7 @@ require('dotenv').config()
 const config = require('./config/config')
 
 mongoose.connect(
-  process.env.DB_URI || config.db,
+  process.env.DB_URI || DB.UIR || config.db,
   { useNewUrlParser: true },
   () => console.log('mongoose is connected')
 )
