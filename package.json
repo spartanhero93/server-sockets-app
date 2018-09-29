@@ -13,9 +13,6 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {},
-  "scripts": {
-    "start": "node app.js"
-  },
   "engines": {
     "node": "8.12",
     "npm": "6.4.1"
