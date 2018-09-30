@@ -13,7 +13,7 @@ module.exports = (client, id) => {
        */
         FactoryModel.deleteOne({ _id: id }, deleteError => {
           deleteError
-            ? client.emit('Error', 'Problem deleting factory')
+            ? client.emit('Error', 'could not delete factory')
             : client.emit('removeFactory', id)
         })
   })

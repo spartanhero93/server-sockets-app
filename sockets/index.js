@@ -4,20 +4,12 @@ const addFactoryController = require('./addFactory')
 const removeFactoryController = require('./removeFactory')
 const updateFactoryController = require('./updateFactory')
 
-const Factories = client => ({
-  addFactory: _.partial(addFactoryController, client),
-  allFactories: _.partial(allFactoryController, client),
-  removeFactory: _.partial(removeFactoryController, client),
-  updateFactory: _.partial(updateFactoryController, client)
-})
-
+/** listen to emits from client, and execute them with
+ *  the respective controllers
+ */
 module.exports = (io, client) => {
-  const { addFactory, allFactories, removeFactory, updateFactory } = Factories(
-    io
-  )
-
-  client.on('addFactory', addFactory)
-  client.on('allFactories', allFactories)
-  client.on('removeFactory', removeFactory)
-  client.on('updateFactory', updateFactory)
+  client.on('addFactory', _.partial(addFactoryController, io))
+  client.on('allFactories', _.partial(allFactoryController, io))
+  client.on('removeFactory', _.partial(removeFactoryController, io))
+  client.on('updateFactory', _.partial(updateFactoryController, io))
 }
